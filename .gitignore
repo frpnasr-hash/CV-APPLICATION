@@ -1,0 +1,28 @@
+# Dependencies
+node_modules/
+
+# Environment & Secrets (NEVER commit real secrets)
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Private Runtime Database, Uploads, Exports, Backups, and Seed Payload
+runtime-data/
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+*.db
+
+# Logs and PIDs
+*.log
+npm-debug.log*
+supervisord.pid
+supervisor.sock
+
+# OS/Editor
+.DS_Store
+.vscode/
+.idea/
+/tmp/
