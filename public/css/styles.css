@@ -1,0 +1,508 @@
+/* ==========================================================================
+   Radiology CV Studio — Healthcare Professional SaaS Styling
+   Supports Arabic RTL & English LTR, Light & Dark Themes, Accessible Focus
+   ========================================================================== */
+
+:root {
+  --bg-page: #f8fafc;
+  --bg-surface: #ffffff;
+  --bg-subtle: #f1f5f9;
+  --bg-accent-soft: #f0fdfa;
+  --bg-warn-soft: #fffbeb;
+  --bg-danger-soft: #fef2f2;
+  --text-primary: #0f172a;
+  --text-secondary: #334155;
+  --text-muted: #64748b;
+  --border-color: #cbd5e1;
+  --border-subtle: #e2e8f0;
+  --brand-navy: #0f3d56;
+  --brand-teal: #0f766e;
+  --brand-teal-hover: #115e59;
+  --accent-amber: #b45309;
+  --danger-red: #b91c1c;
+  --success-green: #15803d;
+  --focus-ring: #0284c7;
+  --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.07);
+  --shadow-md: 0 4px 12px rgba(15, 23, 42, 0.08);
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --font-sans: 'Noto Naskh Arabic', 'Segoe UI', Tahoma, system-ui, -apple-system, sans-serif;
+}
+
+[data-theme="dark"] {
+  --bg-page: #0b1120;
+  --bg-surface: #111827;
+  --bg-subtle: #1e293b;
+  --bg-accent-soft: #042f2e;
+  --bg-warn-soft: #451a03;
+  --bg-danger-soft: #450a0a;
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+  --border-color: #334155;
+  --border-subtle: #1e293b;
+  --brand-navy: #38bdf8;
+  --brand-teal: #14b8a6;
+  --brand-teal-hover: #2dd4bf;
+  --accent-amber: #fbbf24;
+  --danger-red: #f87171;
+  --success-green: #4ade80;
+  --focus-ring: #38bdf8;
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 14px rgba(0, 0, 0, 0.5);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-sans);
+  background-color: var(--bg-page);
+  color: var(--text-primary);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+a, button, input, select, textarea {
+  font-family: inherit;
+}
+
+*:focus-visible {
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
+/* Topbar */
+.app-topbar {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background: var(--bg-surface);
+  border-bottom: 1px solid var(--border-color);
+  padding: 0.65rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  box-shadow: var(--shadow-sm);
+}
+
+.brand-group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.brand-badge {
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-md);
+  background: var(--brand-teal);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+
+.brand-title {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--brand-navy);
+  margin: 0;
+}
+
+.brand-subtitle {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.topbar-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+/* Autosave Status Pill */
+.sync-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border: 1px solid var(--border-color);
+  background: var(--bg-subtle);
+}
+
+.sync-pill.saved {
+  color: var(--success-green);
+  border-color: var(--success-green);
+}
+
+.sync-pill.saving {
+  color: var(--accent-amber);
+  border-color: var(--accent-amber);
+}
+
+.sync-pill.offline, .sync-pill.failed {
+  color: var(--danger-red);
+  border-color: var(--danger-red);
+  background: var(--bg-danger-soft);
+}
+
+/* Main Shell Grid */
+.app-shell {
+  display: grid;
+  grid-template-columns: 270px 1fr;
+  min-height: calc(100vh - 64px);
+}
+
+.app-sidebar {
+  background: var(--bg-surface);
+  border-inline-end: 1px solid var(--border-color);
+  padding: 1rem 0.85rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.nav-section-title {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+  margin: 0.25rem 0.5rem;
+  font-weight: 700;
+}
+
+.nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.nav-btn {
+  width: 100%;
+  text-align: start;
+  background: transparent;
+  border: none;
+  padding: 0.55rem 0.75rem;
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  transition: background 0.15s;
+}
+
+.nav-btn:hover {
+  background: var(--bg-subtle);
+}
+
+.nav-btn.active {
+  background: var(--bg-accent-soft);
+  color: var(--brand-teal);
+  font-weight: 700;
+  border-inline-start: 3px solid var(--brand-teal);
+}
+
+.stage-step-badge {
+  font-size: 0.72rem;
+  padding: 0.1rem 0.45rem;
+  border-radius: 999px;
+  background: var(--bg-subtle);
+  color: var(--text-muted);
+}
+
+.stage-step-badge.completed {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.stage-step-badge.needs_confirmation {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+/* Main Content Area */
+.app-main {
+  padding: 1.5rem;
+  max-width: 1180px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Cards & Panels */
+.card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  margin-bottom: 1.25rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.85rem;
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.card-title {
+  margin: 0;
+  font-size: 1.15rem;
+  color: var(--brand-navy);
+}
+
+/* Banners & Alerts */
+.banner {
+  padding: 0.95rem 1.15rem;
+  border-radius: var(--radius-md);
+  margin-bottom: 1.15rem;
+  border: 1px solid var(--border-color);
+  font-size: 0.92rem;
+}
+
+.banner-info {
+  background: var(--bg-accent-soft);
+  border-color: var(--brand-teal);
+}
+
+.banner-warn {
+  background: var(--bg-warn-soft);
+  border-color: var(--accent-amber);
+}
+
+.banner-danger {
+  background: var(--bg-danger-soft);
+  border-color: var(--danger-red);
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.5rem 0.95rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid var(--border-color);
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  text-decoration: none;
+  min-height: 38px;
+}
+
+.btn:hover {
+  background: var(--bg-subtle);
+}
+
+.btn-primary {
+  background: var(--brand-teal);
+  color: #ffffff;
+  border-color: var(--brand-teal);
+}
+
+.btn-primary:hover {
+  background: var(--brand-teal-hover);
+}
+
+.btn-danger {
+  background: var(--danger-red);
+  color: #ffffff;
+  border-color: var(--danger-red);
+}
+
+.btn-sm {
+  padding: 0.3rem 0.65rem;
+  font-size: 0.8rem;
+  min-height: 32px;
+}
+
+/* Forms & Inputs */
+.form-group {
+  margin-bottom: 1.1rem;
+}
+
+.form-label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+  font-size: 0.93rem;
+}
+
+.form-sublabel {
+  display: block;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin-bottom: 0.4rem;
+}
+
+.form-input, .form-select, .form-textarea {
+  width: 100%;
+  padding: 0.55rem 0.75rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  font-size: 0.93rem;
+}
+
+.form-textarea {
+  min-height: 85px;
+  resize: vertical;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0.85rem;
+}
+
+/* Badges & Status Labels */
+.badge {
+  display: inline-block;
+  padding: 0.18rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.76rem;
+  font-weight: 600;
+  border: 1px solid var(--border-color);
+  background: var(--bg-subtle);
+}
+
+.badge-confirmed {
+  background: #dcfce7;
+  color: #166534;
+  border-color: #86efac;
+}
+
+.badge-needs-conf {
+  background: #fef3c7;
+  color: #92400e;
+  border-color: #fde68a;
+}
+
+.badge-imported {
+  background: #e0f2fe;
+  color: #075985;
+  border-color: #7dd3fc;
+}
+
+.badge-setup {
+  background: #ffedd5;
+  color: #9a3412;
+  border-color: #fdba74;
+}
+
+/* Explain Question Box */
+.explain-box {
+  background: var(--bg-subtle);
+  border-inline-start: 3px solid var(--brand-navy);
+  padding: 0.75rem 0.95rem;
+  border-radius: var(--radius-sm);
+  margin-top: 0.45rem;
+  font-size: 0.84rem;
+}
+
+/* Progress Bar */
+.progress-track {
+  width: 100%;
+  height: 10px;
+  background: var(--bg-subtle);
+  border-radius: 999px;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+}
+
+.progress-fill {
+  height: 100%;
+  background: var(--brand-teal);
+  transition: width 0.25s ease;
+}
+
+/* CV Live Preview Frame */
+.cv-preview-frame {
+  width: 100%;
+  min-height: 680px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  background: #ffffff;
+}
+
+/* Table */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.86rem;
+}
+
+.data-table th, .data-table td {
+  border: 1px solid var(--border-color);
+  padding: 0.55rem 0.7rem;
+  text-align: start;
+  vertical-align: top;
+}
+
+.data-table th {
+  background: var(--bg-subtle);
+  font-weight: 700;
+}
+
+/* Footer */
+.app-footer {
+  margin-top: 2.5rem;
+  padding: 1.25rem;
+  border-top: 1px solid var(--border-color);
+  background: var(--bg-surface);
+  font-size: 0.84rem;
+  color: var(--text-muted);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* Responsive Mobile Layout */
+@media (max-width: 900px) {
+  .app-shell {
+    grid-template-columns: 1fr;
+  }
+  .app-sidebar {
+    border-inline-end: none;
+    border-bottom: 1px solid var(--border-color);
+  }
+  .app-main {
+    padding: 1rem;
+  }
+}
